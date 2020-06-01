@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-
+import Auth from "../lib/auth.lib";
 class Logout extends Component<any> {
   componentDidMount() {
     localStorage.removeItem("token");
-    this.props.auth();
-    this.props.history.push("/");
+
+    Auth.logout(() => {
+      this.props.auth();
+      this.props.history.push("/");
+    });
   }
 
   render() {

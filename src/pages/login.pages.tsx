@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import auth from "../lib/auth.lib";
 
 import "../component/styles/Login.css";
 
@@ -27,11 +28,17 @@ class Login extends Component<any, IState> {
   handlerSubmit(e: FormElement) {
     e.preventDefault();
 
-    localStorage.setItem("token", "tokenDeLaApiConsultada");
+    /**validacion por api */
     console.log("submit...!");
 
-    this.props.auth(true, true, 1);
-    this.props.history.push("/dashboard");
+    const token: string = "tokenDeLaApiConsultada";
+
+    auth.login(() => {
+      this.props.auth(true, true, 1);
+      this.props.history.push("/dashboard");
+    }, token);
+
+    console.log(auth.isAuthentication());
   }
 
   render() {

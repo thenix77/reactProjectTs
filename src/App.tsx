@@ -1,15 +1,16 @@
 import React, { Fragment } from "react";
 import { Switch, Route, RouteComponentProps } from "react-router-dom";
-import Menu from "./component/menu";
+import { ProtectedRoute } from "./lib/protected.route";
 
 import "./component/styles/App.css";
 
 import Inicio from "./pages/inicio.pages";
 import Home from "./pages/home.pages";
 import Login from "./pages/login.pages";
-
 import Dashboard from "./pages/dashboard.pages";
+import Menu from "./component/menu";
 import Logout from "./pages/logout.pages";
+import Consulta from "./pages/consultas.page";
 
 interface IState {
   auth: boolean;
@@ -88,19 +89,29 @@ class App extends React.Component<{}, IState> {
                     )}
                   />
                   />
-                  <Route
+                  <ProtectedRoute
                     exact
                     path="/dashboard"
                     component={(props: any) => <Dashboard {...props} />}
                   />
                   />
-                  <Route
+                  <ProtectedRoute
+                    exact
+                    path="/consulta"
+                    component={(props: any) => <Consulta {...props} />}
+                  />
+                  />
+                  <ProtectedRoute
                     exact
                     path="/logout"
                     component={(props: any) => (
                       <Logout {...props} auth={this.handlerLogout} />
                     )}
                   />
+                  />
+                  <Route
+                    path="*"
+                    component={(props: any) => <Home {...props} />}
                   />
                 </Switch>
               </div>
