@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
-import '../component/styles/Login.css';
-
+import "../component/styles/Login.css";
 
 interface IState {
   email: string;
@@ -13,7 +12,7 @@ type FormElement = React.FormEvent<HTMLFormElement>;
 class Login extends Component<any, IState> {
   constructor(props: any) {
     super(props);
-    console.log(props);
+
     this.handlerOnChange = this.handlerOnChange.bind(this);
     this.handlerSubmit = this.handlerSubmit.bind(this);
   }
@@ -28,10 +27,11 @@ class Login extends Component<any, IState> {
   handlerSubmit(e: FormElement) {
     e.preventDefault();
 
-    localStorage.setItem('token', 'tokenDeLaApiConsultada');
-    console.log('submit...!');
-    this.props.auth(true);
-    this.props.history.push('/dashboard')
+    localStorage.setItem("token", "tokenDeLaApiConsultada");
+    console.log("submit...!");
+
+    this.props.auth(true, true, 1);
+    this.props.history.push("/dashboard");
   }
 
   render() {

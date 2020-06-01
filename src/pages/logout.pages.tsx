@@ -1,22 +1,18 @@
-import React, { Component } from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import React, { Component } from "react";
 
-class Logout extends Component{
-    constructor(props:RouteComponentProps){
-        super(props)
+class Logout extends Component<any> {
+  componentDidMount() {
+    localStorage.removeItem("token");
+    this.props.auth();
+    this.props.history.push("/");
+  }
 
-        localStorage.removeItem('token')
-        props.history.push('/')
-        console.log(props.history);
-    }
-    
-    
-    render(){
-        return(
-            <div>
-                <h1>Saliendo del sistema...</h1>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <h1>Saliendo del sistema...</h1>
+      </div>
+    );
+  }
 }
-export default Logout
+export default Logout;

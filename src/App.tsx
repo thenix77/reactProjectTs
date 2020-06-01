@@ -1,45 +1,55 @@
-import React, { Fragment } from 'react';
-import {Switch,Route, RouteComponentProps} from 'react-router-dom'
-import Menu from './component/menu'
+import React, { Fragment } from "react";
+import { Switch, Route, RouteComponentProps } from "react-router-dom";
+import Menu from "./component/menu";
 
-import './component/styles/App.css';
+import "./component/styles/App.css";
 
-import Inicio from './pages/inicio.pages'
-import Home from './pages/home.pages';
-import Login from './pages/login.pages'
+import Inicio from "./pages/inicio.pages";
+import Home from "./pages/home.pages";
+import Login from "./pages/login.pages";
 
-import Dashboard from './pages/dashboard.pages';
-import Logout from './pages/logout.pages';
+import Dashboard from "./pages/dashboard.pages";
+import Logout from "./pages/logout.pages";
 
-interface IState{
-  auth:boolean
-  admin:boolean
-  level:number
-  saludo:string
+interface IState {
+  auth: boolean;
+  admin: boolean;
+  level: number;
+  // saludo: string;
 }
 
-
-class App extends React.Component<{},IState>{
-  constructor(props:RouteComponentProps){
-    super(props)
+class App extends React.Component<{}, IState> {
+  constructor(props: RouteComponentProps) {
+    super(props);
     this.state = {
-      auth:false,
-      admin:true,
-      level:3,
-      saludo:'hola bicholin'
-    }
-    
-    this.handlerAuth = this.handlerAuth.bind(this)
+      auth: false,
+      admin: false,
+      level: 1,
+      //     saludo: "hola bicholin",
+    };
+
+    this.handlerAuth = this.handlerAuth.bind(this);
+    this.handlerLogout = this.handlerLogout.bind(this);
   }
 
-handlerAuth(validation:boolean){
+  handlerAuth(auth: boolean, admin: boolean, level: number) {
+    console.log("validadtion");
 
-  console.log(`auth: ${validation}`)
-  this.setState({
-    auth:validation
-  })
-  console.log( this.state)
-}
+    this.setState({
+      auth,
+      admin,
+      level,
+    });
+    console.log(this.state);
+  }
+
+  handlerLogout() {
+    this.setState({
+      auth: false,
+      admin: false,
+      level: 1,
+    });
+  }
 
   render() {
     return (
@@ -60,7 +70,7 @@ handlerAuth(validation:boolean){
                     component={(props: any) => (
                       <Inicio
                         {...props}
-                        saludo={this.state.saludo}
+                        //saludo={this.state.saludo}
                         //clicked={this.handlerClick}
                       />
                     )}
@@ -87,7 +97,9 @@ handlerAuth(validation:boolean){
                   <Route
                     exact
                     path="/logout"
-                    component={(props:RouteComponentProps) => <Logout {...props} />}
+                    component={(props: any) => (
+                      <Logout {...props} auth={this.handlerLogout} />
+                    )}
                   />
                   />
                 </Switch>
