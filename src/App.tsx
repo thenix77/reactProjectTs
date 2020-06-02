@@ -16,7 +16,6 @@ interface IState {
   auth: boolean;
   admin: boolean;
   level: number;
-  // saludo: string;
 }
 
 class App extends React.Component<{}, IState> {
@@ -26,7 +25,6 @@ class App extends React.Component<{}, IState> {
       auth: false,
       admin: false,
       level: 1,
-      //     saludo: "hola bicholin",
     };
 
     this.handlerAuth = this.handlerAuth.bind(this);
@@ -34,14 +32,11 @@ class App extends React.Component<{}, IState> {
   }
 
   handlerAuth(auth: boolean, admin: boolean, level: number) {
-    console.log("validadtion");
-
     this.setState({
       auth,
       admin,
       level,
     });
-    console.log(this.state);
   }
 
   handlerLogout() {

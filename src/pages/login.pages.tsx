@@ -68,8 +68,6 @@ class Login extends Component<any, IState> {
       });
 
     /** */
-    console.log("submit...!");
-
     if (this.state.auth) {
       const token: string = this.state.token;
 
@@ -127,7 +125,8 @@ class Login extends Component<any, IState> {
                   ) : (
                     <i className="fas fa-sign-in-alt"></i>
                   )}
-                  &nbsp; Enviar
+                  &nbsp;
+                  {this.state.loading ? <span>validando...</span> : " Enviar"}
                 </button>
               </form>
             </div>
