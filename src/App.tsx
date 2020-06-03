@@ -11,6 +11,7 @@ import Dashboard from "./pages/dashboard.pages";
 import Menu from "./component/menu";
 import Logout from "./pages/logout.pages";
 import Consulta from "./pages/consultas.page";
+import Alumnos from "./pages/Alumnos.pages";
 
 interface IState {
   auth: boolean;
@@ -94,6 +95,11 @@ class App extends React.Component<{}, IState> {
                     exact
                     path="/consulta"
                     component={(props: any) => <Consulta {...props} />}
+                  />
+                  <ProtectedRoute
+                    exact
+                    path="/alumnos"
+                    component={(props: any) => <Alumnos {...props} />}
                   />
                   />
                   <ProtectedRoute

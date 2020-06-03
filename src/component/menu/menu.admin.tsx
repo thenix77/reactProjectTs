@@ -27,14 +27,14 @@ class MenuAdmin extends Component {
             <Link className="dropdown-item" to="/escuela">
               <i className="fas fa-school"></i> Escuela
             </Link>
-            <Link className="dropdown-item" to="/instructor">
+            <Link className="dropdown-item" to="/cursos">
               <i className="fas fa-book"></i> Cursos
             </Link>
           </div>
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" to="/registro">
+          <Link className="nav-link" to="/alumnos">
             <i className="fas fa-users"></i> Alumnos
           </Link>
         </li>

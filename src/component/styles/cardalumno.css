@@ -1,0 +1,21 @@
+.cardsize {
+  width: 100rem;
+}
+
+.fondo {
+  opacity: 0.7;
+}
+
+.imagen {
+  width: 100%;
+  min-height: 100%;
+  border: 1px solid red;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen > img {
+  height: 150px;
+}

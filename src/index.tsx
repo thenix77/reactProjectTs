@@ -7,6 +7,10 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "jquery/dist/jquery";
+import "popper.js/dist/popper";
+import "bootstrap/dist/js/bootstrap.bundle";
+
 import "@fortawesome/fontawesome-free/css/all.css";
 
 ReactDOM.render(

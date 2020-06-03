@@ -11,7 +11,7 @@ import MenuUsuario from "./menu/menu.usuario";
 class Menu extends Component<any> {
   render() {
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top ">
         <Link className="navbar-brand" to="/">
           <img
             src={Logo}
