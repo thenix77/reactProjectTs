@@ -8,7 +8,7 @@ import "./styles/cardalumno.css";
 
 interface IProps {
   student: any;
-  key: number;
+  //key: number;
 }
 
 class CardAlumno extends Component<IProps> {

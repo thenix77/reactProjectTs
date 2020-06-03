@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import CardAlumno from "../component/CardAlumno";
 import ApiJson from "../key.json";
-
 import "../component/styles/alumno.css";
+
+import CardAlumno from "../component/CardAlumno";
+import TablaCursosAlumno from "../component/tableAlumnoCurso";
 
 type FormElement = React.FormEvent<HTMLFormElement>;
 
@@ -10,6 +11,7 @@ interface IState {
   idsinfo?: string;
   students?: [];
   loading: boolean;
+  cursos?: [];
 }
 
 class Alumnos extends Component<any, IState> {
@@ -54,12 +56,20 @@ class Alumnos extends Component<any, IState> {
 
     this.setState({
       loading: false,
+      idsinfo: "",
     });
   }
 
   render() {
     const card = this.state.students?.map((student, index) => (
-      <CardAlumno student={student} key={index} />
+      <div className="container" key={index}>
+        <div className="card-columns">
+          <CardAlumno student={student} />
+        </div>
+        <div>
+          <TablaCursosAlumno student={student} />
+        </div>
+      </div>
     ));
 
     return (
@@ -102,12 +112,7 @@ class Alumnos extends Component<any, IState> {
             </div>
           </div>
         </div>
-        <div className="col-lg-9">
-          <div className="container">
-            <div className="card-columns">{card}</div>
-            <div></div>
-          </div>
-        </div>
+        <div className="col-lg-9">{card}</div>
       </div>
     );
   }
